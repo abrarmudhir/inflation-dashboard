@@ -1,0 +1,20 @@
+version: "3.4"
+
+services:
+  inflation-dash:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/app
+    ports:
+      - 8050:8050
+      - 5677:5677
+      - 5678:5678
+    env_file: ./config/.env
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
